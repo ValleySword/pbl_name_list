@@ -1,0 +1,40 @@
+services:
+  php-apache:
+    build: ./config/php # PHP+Apache用Dockerfileがあるディレクトリ
+    ports:
+      - "8080:80"      #  HTTP用（リダイレクト用 ホスト側の8080番ポートをコンテナの80番にマッピング
+      # - "8443:443"     # HTTPS用 ホスト側の8443番ポートをコンテナの443番にマッピング
+    volumes:
+      - ./html:/var/www/html # ホストのhtmlフォルダをコンテナのドキュメントルートにマウント
+      - ./config/apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      # - ./config/apache/ssl:/etc/apache2/ssl     SSL有効時のみ
+    depends_on:
+      - mysql # MySQLサービスの起動を待つ
+    tty: true
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: myapp_db
+      MYSQL_USER: myapp_user
+      MYSQL_PASSWORD: myapp_pass
+    volumes:
+      - ./data/mysql:/var/lib/mysql # データ永続化用のマウント
+      - ./config/mysql/initdb.d:/docker-entrypoint-initdb.d # 初期SQLを自動実行するためのディレクトリ
+    ports:
+      - "3306:3306"
+    tty: true
+      
+
+  phpmyadmin:
+    image: phpmyadmin
+    depends_on:
+      - mysql
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=rootpassword
+    ports:
+      - "3001:80"
