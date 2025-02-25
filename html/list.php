@@ -12,7 +12,7 @@ $users = $sth->fetchAll(PDO::FETCH_ASSOC);
   <tr>
     <th>名前</th>
     <th>学年</th>
-    <!-- <th>学部   // モバイルの幅の都合上非表示</th>
+    <!-- <th>学部   // 学部・一言コメントはモバイルの幅の都合上非表示</th>
     <th>一言コメント</th> -->
     <th>グループ</th>
     <th>写真</th>

@@ -1,7 +1,10 @@
-# PBL_name_list Beta
+# PBL_Name_List
 
-正常に動作することは確認済み
-READMEも簡単に記述
+## 導入手順
+1. git cloneする
+2. docker-compose build
+3. docker-compose up -d
+4. http://localhost:8080 にアクセス
 
 ## コンテナ操作
 - docker-compose build コンテナ作成（初回のみ）
@@ -10,7 +13,13 @@ READMEも簡単に記述
 - docker-compose down コンテナ削除
 
 ## 必要な環境
-
 - Docker
 - Docker Compose
 - Git
+
+## 使用技術
+- **言語**: PHP
+- **Webサーバー**: Apache
+- **データベース**: MySQL
+- **コンテナ管理**: Docker, Docker Compose
+- **フロントエンド**: HTML, CSS, JavaScript

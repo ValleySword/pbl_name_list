@@ -25,16 +25,3 @@ services:
     ports:
       - "3306:3306"
     tty: true
-      
-
-  phpmyadmin:
-    image: phpmyadmin
-    depends_on:
-      - mysql
-    environment:
-      - PMA_ARBITRARY=1
-      - PMA_HOSTS=mysql
-      - PMA_USER=root
-      - PMA_PASSWORD=rootpassword
-    ports:
-      - "3001:80"

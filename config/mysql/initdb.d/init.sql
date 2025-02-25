@@ -11,9 +11,3 @@ CREATE TABLE users (
     photo VARCHAR(255),
     team VARCHAR(20)
 ) CHARSET=utf8;
-
--- 文字化けするので追加しない
--- INSERT INTO users (name, grade, faculty, comment, photo, team)
--- VALUES 
--- ('山田太郎', '1年生', '経営学部', '元気な学生です', 'images/yamada.jpg', '4グループ'),
--- ('佐藤花子', '2年生', '現代社会学部情報専攻', '活発な性格です', 'images/sato.jpg', '5グループ');
