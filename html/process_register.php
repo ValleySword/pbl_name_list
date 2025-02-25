@@ -12,9 +12,15 @@ if (preg_match('/\/|\<|\>/', $name)) {
   $name = str_replace($sym, '', $name);
 }
 
+if (!is_dir('images/')) {
+  if (!mkdir('images/', 0755, true)) {
+    die("画像アップロード用ディレクトリの作成に失敗しました。");
+  }
+}
+
 $photoPath = '';
 if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
-  $photoPath = 'images/' . time() . $name . '.jpg';
+  $photoPath = 'images/' . $name . '.jpg';
   if (!move_uploaded_file($_FILES['photo']['tmp_name'], $photoPath)) {
     die("写真のアップロードに失敗しました。");
   }
