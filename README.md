@@ -2,7 +2,7 @@
 
 ## 導入手順
 1. git cloneする
-2. docker-compose build
+2. docker-compose build（ディレクトリ移動忘れに注意）
 3. docker-compose up -d
 4. http://localhost:8080 にアクセス
 
