@@ -1,5 +1,5 @@
 <?php
-  $dsn = 'mysql:dbname=myapp_db;host=pbl_name_list-mysql-1;';
+  $dsn = 'mysql:dbname=myapp_db;host=mysql;';
   $dbUser = 'root';
   $dbPass = 'rootpassword';
 
