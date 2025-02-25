@@ -14,7 +14,7 @@ if (preg_match('/\/|\<|\>/', $name)) {
 
 $photoPath = '';
 if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
-  $photoPath = 'images/' . $name . '.jpg';
+  $photoPath = 'images/' . time() . $name . '.jpg';
   if (!move_uploaded_file($_FILES['photo']['tmp_name'], $photoPath)) {
     die("写真のアップロードに失敗しました。");
   }
