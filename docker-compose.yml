@@ -1,6 +1,6 @@
 services:
   php-apache:
-    container_name: mysql
+    container_name: php-apache
     build: ./config/php # PHP+Apache用Dockerfileがあるディレクトリ
     ports:
       - "8080:80"      #  HTTP用（リダイレクト用 ホスト側の8080番ポートをコンテナの80番にマッピング
