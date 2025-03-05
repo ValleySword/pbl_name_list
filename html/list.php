@@ -1,7 +1,7 @@
 <?php
 require 'db.php';
 
-$sth = $pdo->query("SELECT * FROM users");
+$sth = $pdo->query("SELECT * FROM users ORDER BY name");
 $users = $sth->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -12,8 +12,9 @@ $users = $sth->fetchAll(PDO::FETCH_ASSOC);
   <tr>
     <th>名前</th>
     <th>学籍番号</th>
-    <!-- <th>学部   // 学部・一言コメントはモバイルの幅の都合上非表示</th>
-    <th>一言コメント</th> -->
+    <th>学部</th>
+    <th>コース</th>
+    <th>一言コメント</th>
     <th>グループ</th>
     <th>写真</th>
   </tr>
@@ -21,8 +22,9 @@ $users = $sth->fetchAll(PDO::FETCH_ASSOC);
     <tr>
       <td><?php echo htmlspecialchars($user['name'], ENT_QUOTES, 'UTF-8'); ?></td>
       <td><?php echo htmlspecialchars($user['grade'], ENT_QUOTES, 'UTF-8'); ?></td>
-      <!-- <td><?php echo htmlspecialchars($user['faculty'], ENT_QUOTES, 'UTF-8'); ?></td>
-      <td><?php echo htmlspecialchars($user['comment'], ENT_QUOTES, 'UTF-8'); ?></td> -->
+      <td><?php echo htmlspecialchars($user['faculty'], ENT_QUOTES, 'UTF-8'); ?></td>
+      <td><?php echo htmlspecialchars($user['department'], ENT_QUOTES, 'UTF-8'); ?></td>
+      <td><?php echo htmlspecialchars($user['comment'], ENT_QUOTES, 'UTF-8'); ?></td>
       <td><?php echo htmlspecialchars($user['team'], ENT_QUOTES, 'UTF-8'); ?></td>
       <td>
         <?php if (!empty($user['photo'])): ?>

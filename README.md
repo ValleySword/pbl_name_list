@@ -2,9 +2,10 @@
 
 ## 導入手順
 1. git cloneする
-2. docker-compose build（ディレクトリ移動忘れに注意）
-3. docker-compose up -d
-4. http://localhost:8080 にアクセス
+2. 0000-default.confとdocker-compose.ymlを設定
+3. docker-compose build（ディレクトリ移動忘れに注意）
+4. docker-compose up -d
+5. http://localhost:80 にアクセス
 
 ## コンテナ操作
 - docker-compose build コンテナ作成（初回のみ）

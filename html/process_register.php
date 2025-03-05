@@ -3,6 +3,7 @@ require 'db.php';
 
 $name = trim($_POST['name']);
 $grade = trim($_POST['grade']);
+$department = trim($_POST['department']);
 $faculty = trim($_POST['faculty']);
 $comment = trim($_POST['comment']);
 $team = trim($_POST['team']);
@@ -27,8 +28,8 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
 }
 
 try {
-  $stmt = $pdo->prepare("INSERT INTO users (name, grade, faculty, comment, team, photo) VALUES (?, ?, ?, ?, ?, ?)");
-  $stmt->execute([$name, $grade, $faculty, $comment, $team, $photoPath]);
+  $stmt = $pdo->prepare("INSERT INTO users (name, grade, faculty, department, comment, team, photo) VALUES (?, ?, ?, ?, ?, ?, ?)");
+  $stmt->execute([$name, $grade, $faculty, $department, $comment, $team, $photoPath]);
   header("Location: list.php");
   exit;
 } catch (PDOException $e) {

@@ -5,6 +5,7 @@ $id = trim($_POST['id']);
 $name = trim($_POST['name']);
 $grade = trim($_POST['grade']);
 $faculty = trim($_POST['faculty']);
+$department = trim($_POST['department']);
 $comment = trim($_POST['comment']);
 $team = trim($_POST['team']);
 
@@ -26,8 +27,8 @@ if ($_FILES['photo']['tmp_name']) {
 }
 
 try {
-  $stmt = $pdo->prepare('UPDATE users SET  grade = :grade, faculty = :faculty, comment = :comment, team = :team, photo = :photo WHERE id = :id'); // 現状画像のパスを変更できないため名前とパスは編集不可能
-  $stmt->execute(array(':grade' => $grade, ':faculty' => $faculty, ':comment' => $comment, ':team' => $team, ':photo' => $photoPath, ':id' => $id));
+  $stmt = $pdo->prepare('UPDATE users SET  grade = :grade, faculty = :faculty, department = :department, comment = :comment, team = :team, photo = :photo WHERE id = :id'); // 現状画像のパスを変更できないため名前とパスは編集不可能
+  $stmt->execute(array(':grade' => $grade, ':faculty' => $faculty, ':department' => $department, ':comment' => $comment, ':team' => $team, ':photo' => $photoPath, ':id' => $id));
   header("Location: list.php");
   exit;
 } catch (PDOException $e) {

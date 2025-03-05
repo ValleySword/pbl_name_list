@@ -41,6 +41,13 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </select>
       </div>
       <div class="form-group">
+        <label for="department">コース</label>
+        <select id="department" name="department" required>
+          <option value="<?php echo $user['department']; ?>" selected hidden><?php echo $user['department']; ?></option>
+          <!-- JavaScriptでオプションを挿入 -->
+        </select>
+      </div>
+      <div class="form-group">
         <label for="comment">一言コメント（20字まで）</label>
         <textarea id="comment" name="comment" value="<?php echo $user['comment']; ?>" maxlength="20"><?php echo $user['comment']; ?></textarea>
       </div>
@@ -63,6 +70,119 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php endforeach; ?>
     <p class="back-link"><a href="list.php">一覧へ戻る</a></p>
   </form>
+  <script>
+    const departmentOptions = {
+      "国際日本学部": [{
+          value: "英語国際コミュニケーション専攻",
+          text: "英語国際コミュニケーション専攻"
+        },
+        {
+          value: "国際関係学専攻",
+          text: "国際関係学専攻"
+        },
+        {
+          value: "多文化共生専攻",
+          text: "多文化共生専攻"
+        },
+        {
+          value: "日本史専攻",
+          text: "日本史専攻"
+        },
+        {
+          value: "東洋史・西洋史専攻",
+          text: "東洋史・西洋史専攻"
+        },
+        {
+          value: "考古学・地理学専攻",
+          text: "日本とアジアの文化・文学専攻"
+        },
+        {
+          value: "日本語・日本語教育専攻",
+          text: "日本語・日本語教育専攻"
+        },
+      ],
+      "建築＆芸術学部": [{
+          value: "インテリアデザイン専攻",
+          text: "インテリアデザイン専攻"
+        },
+        {
+          value: "デザイン・造形美術専攻",
+          text: "デザイン・造形美術専攻"
+        },
+        {
+          value: "マンガ制作専攻",
+          text: "マンガ制作専攻"
+        },
+        {
+          value: "映像・アニメーション専攻",
+          text: "映像・アニメーション専攻"
+        },
+        {
+          value: "映画・演劇専攻",
+          text: "映画・演劇専攻"
+        },
+      ],
+      "現代社会学部": [{
+          value: "観光マネジメント専攻",
+          text: "観光マネジメント専攻"
+        },
+        {
+          value: "地域価値創造専攻",
+          text: "地域価値創造専攻"
+        },
+        {
+          value: "心理学専攻",
+          text: "心理学専攻"
+        },
+        {
+          value: "情報・コンピュータ専攻",
+          text: "情報・コンピュータ専攻"
+        },
+        {
+          value: "メディア・社会学専攻",
+          text: "メディア・社会学専攻"
+        },
+      ],
+      "経営学部": [{
+        value: "経営学専攻",
+        text: "経営学専攻"
+      }, ],
+      "健康栄養学部": [{
+        value: "栄養学専攻",
+        text: "栄養学専攻"
+      }, ],
+      "国際看護学部": [{
+        value: "看護学専攻",
+        text: "看護学専攻"
+      }, ],
+    };
+
+    function updateDepartmentOptions() {
+      const facultySelect = document.getElementById('faculty');
+      const departmentSelect = document.getElementById('department');
+      const selectedFaculty = facultySelect.value;
+
+      // 初期化
+      // departmentSelect.innerHTML = '<option value="" disabled selected hidden>選択してください</option>';
+
+      if (departmentOptions[selectedFaculty]) {
+        departmentOptions[selectedFaculty].forEach(opt => {
+          const option = document.createElement('option');
+          option.value = opt.value;
+          option.text = opt.text;
+          departmentSelect.appendChild(option);
+        });
+      }
+    }
+
+    // ページ読み込み時に、現在の学部の選択値に基づいて学科プルダウンを更新する
+    document.addEventListener('DOMContentLoaded', function() {
+      updateDepartmentOptions();
+    });
+
+    // 学部選択が変更されたときに更新する
+    document.getElementById('faculty').addEventListener('change', updateDepartmentOptions);
+  </script>
 </main>
 </body>
 

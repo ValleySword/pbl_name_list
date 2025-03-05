@@ -61,7 +61,8 @@ if (!$users) {
         <tr>
             <th>名前</th>
             <th>学籍番号</th>
-            <th>学部</th>
+            <!-- <th>学部</th> スマホの画面幅の都合上非表示
+            <th>コース</th> -->
             <th>一言コメント</th>
             <th class="photo-col">写真</th>
         </tr>
@@ -69,7 +70,8 @@ if (!$users) {
             <tr>
                 <td><?php echo htmlspecialchars($user['name'], ENT_QUOTES, 'UTF-8'); ?></td>
                 <td><?php echo htmlspecialchars($user['grade'], ENT_QUOTES, 'UTF-8'); ?></td>
-                <td><?php echo htmlspecialchars($user['faculty'], ENT_QUOTES, 'UTF-8'); ?></td>
+                <!-- <td><?php echo htmlspecialchars($user['faculty'], ENT_QUOTES, 'UTF-8'); ?></td>
+                <td><?php echo htmlspecialchars($user['department'], ENT_QUOTES, 'UTF-8'); ?></td> -->
                 <td><?php echo htmlspecialchars($user['comment'], ENT_QUOTES, 'UTF-8'); ?></td>
                 <td>
                     <?php if (!empty($user['photo'])): ?>
