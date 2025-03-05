@@ -8,7 +8,9 @@ services:
     volumes:
       - ./html:/var/www/html # ホストのhtmlフォルダをコンテナのドキュメントルートにマウント
       - ./config/apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
-      - ./letsencrypt/live/pblnamelist.zapto.org:/etc/apache2/ssl     # SSL有効時のみ
+      # - /etc/letsencrypt/live/pblnamelist.zapto.org:/etc/apache2/ssl     # SSL有効時のみ
+      - /etc/letsencrypt/live/pblnamelist.zapto.org/fullchain.pem:/etc/apache2/ssl/fullchain.pem
+      - /etc/letsencrypt/live/pblnamelist.zapto.org/privkey.pem:/etc/apache2/ssl/privkey.pem
     depends_on:
       - mysql # MySQLサービスの起動を待つ
     tty: true

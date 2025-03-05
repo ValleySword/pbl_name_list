@@ -18,7 +18,9 @@ $photoPath = '';
 $photoPath = 'images/' . $name . '.jpg';
 
 if ($_FILES['photo']['tmp_name']) {
-  unlink($photoPath);
+	if (file_exists($photoPath)) {
+		unlink($photoPath); 
+	}
   if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
     if (!move_uploaded_file($_FILES['photo']['tmp_name'], $photoPath)) {
       die("写真のアップロードに失敗しました。");
