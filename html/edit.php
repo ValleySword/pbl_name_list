@@ -21,20 +21,15 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <input type="text" name="id" value="<?php echo $user['id'] ?>" hidden>
       <!-- 現状名前は編集不可 -->
       <div class="form-group">
-        <label for="name">名前:</label><input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user['name'], ENT_QUOTES, 'UTF-8'); ?>" required hidden>
+        <label for="name">名前</label><input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user['name'], ENT_QUOTES, 'UTF-8'); ?>" required hidden>
         名前は変更することが出来ないので、削除して作り直して下さい
       </div>
       <div class="form-group">
-        <label for="grade">学年:</label>
-        <select id="grade" name="grade" required>
-          <option value="<?php echo $user['grade']; ?>" selected hidden><?php echo $user['grade']; ?></option>
-          <?php for ($i = 1; $i < 5; $i++): ?>
-            <option><?php echo $i; ?>回生</option>
-          <?php endfor; ?>
-        </select>
+        <label for="grade">学籍番号（大文字）</label>
+        <input type="text" id="grade" name="grade" pattern="^[A-Z0-9]+$" maxlength="6" value="<?php echo $user['grade']; ?>" required>
       </div>
       <div class="form-group">
-        <label for="faculty">学部:</label>
+        <label for="faculty">学部</label>
         <select id="faculty" name="faculty" required>
           <option value="<?php echo $user['faculty']; ?>" selected hidden><?php echo $user['faculty']; ?></option>
           <option>国際日本学部</option>
@@ -47,10 +42,10 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
       <div class="form-group">
         <label for="comment">一言コメント（20字まで）</label>
-        <textarea id="comment" name="comment" value="<?php echo $user['comment']; ?>"><?php echo $user['comment']; ?></textarea>
+        <textarea id="comment" name="comment" value="<?php echo $user['comment']; ?>" maxlength="20"><?php echo $user['comment']; ?></textarea>
       </div>
       <div class="form-group">
-        <label for="team">グループ:</label>
+        <label for="team">グループ</label>
         <select id="team" name="team" required>
           <option value="<?php echo $user['team'] ?>" selected hidden><?php echo $user['team'] ?></option>
           <?php for ($i = 1; $i < 10; $i++): ?>
@@ -59,7 +54,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </select>
       </div>
       <div class="form-group">
-        <label for="photo">写真:</label>
+        <label for="photo">写真（変更が必要な場合のみ）</label>
         <input type="file" id="photo" name="photo">
       </div>
       <div class="form-group">

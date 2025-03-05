@@ -8,16 +8,11 @@
       <input type="text" id="name" name="name" required>
     </div>
     <div class="form-group">
-      <label for="grade">学年:</label>
-      <select id="grade" name="grade" required>
-        <option value="" disabled selected hidden>選択してください</option>
-        <?php for ($i = 1; $i < 5; $i++): ?>
-          <option><?php echo $i; ?>回生</option>
-        <?php endfor; ?>
-      </select>
+      <label for="grade">学籍番号（大文字）</label>
+      <input type="text" id="grade" name="grade" pattern="^[A-Z0-9]+$" maxlength="6" required>
     </div>
     <div class="form-group">
-      <label for="faculty">学部:</label>
+      <label for="faculty">学部</label>
       <select id="faculty" name="faculty" required>
         <option value="" disabled selected hidden>選択してください</option>
         <option>国際日本学部</option>
@@ -33,7 +28,7 @@
       <textarea id="comment" name="comment" maxlength="20"></textarea>
     </div>
     <div class="form-group">
-      <label for="team">グループ:</label>
+      <label for="team">グループ</label>
       <select id="team" name="team" required>
         <option value="" disabled selected hidden>選択してください</option>
         <?php for ($i = 1; $i < 10; $i++): ?>
@@ -42,7 +37,7 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="photo">写真:</label><input type="file" id="photo" name="photo">
+      <label for="photo">写真</label><input type="file" id="photo" name="photo">
     </div>
     <div class="form-group">
       <button type="submit" class="btn-submit">登録

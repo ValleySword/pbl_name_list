@@ -60,7 +60,7 @@ if (!$users) {
     <table>
         <tr>
             <th>名前</th>
-            <th>学年</th>
+            <th>学籍番号</th>
             <th>学部</th>
             <th>一言コメント</th>
             <th class="photo-col">写真</th>

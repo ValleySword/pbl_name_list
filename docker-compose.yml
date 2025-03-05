@@ -3,12 +3,12 @@ services:
     container_name: php-apache
     build: ./config/php # PHP+Apache用Dockerfileがあるディレクトリ
     ports:
-      - "8080:80"      #  HTTP用（リダイレクト用 ホスト側の8080番ポートをコンテナの80番にマッピング
-      # - "8443:443"     # HTTPS用 ホスト側の8443番ポートをコンテナの443番にマッピング
+      - "80:80"      #  HTTP用（リダイレクト用 ホスト側の8080番(HTTPS時?は80番)ポートをコンテナの80番にマッピング
+      # - "443:443"     # HTTPS用 ホスト側の8443番ポートをコンテナの443番にマッピング
     volumes:
       - ./html:/var/www/html # ホストのhtmlフォルダをコンテナのドキュメントルートにマウント
       - ./config/apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
-      # - ./config/apache/ssl:/etc/apache2/ssl     SSL有効時のみ
+      # - ./letsencrypt/live/pblnamelist.zapto.org:/etc/apache2/ssl     # SSL有効時のみ
     depends_on:
       - mysql # MySQLサービスの起動を待つ
     tty: true
