@@ -17,7 +17,9 @@ try {
   $stmt->execute([$id]);
   $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
   $path = $users[0]["photo"];
-  unlink($path);
+  if (file_exists($path)) {
+    unlink($path);
+  }
 
   $stmt = $pdo->prepare("DELETE FROM users WHERE id = ?");
   $stmt->execute([$id]);

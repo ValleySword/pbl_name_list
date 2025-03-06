@@ -21,23 +21,22 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
       <input type="text" name="id" value="<?php echo $user['id'] ?>" hidden>
       <!-- 現状名前は編集不可 -->
       <div class="form-group">
-        <label for="name">名前</label><input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user['name'], ENT_QUOTES, 'UTF-8'); ?>" required hidden>
+        <label for="name">名前</label><input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user['name'], ENT_QUOTES, 'UTF-8'); ?>" hidden>
         名前は変更することが出来ないので、削除して作り直して下さい
       </div>
       <div class="form-group">
         <label for="grade">学籍番号（大文字）</label>
-        <input type="text" id="grade" name="grade" pattern="^[A-Z0-9]+$" maxlength="6" value="<?php echo $user['grade']; ?>" required>
+        <input type="text" id="grade" name="grade" pattern="^[A-Z0-9]+$" maxlength="6" value="<?php echo $user['grade']; ?>">
       </div>
       <div class="form-group">
         <label for="faculty">学部</label>
-        <select id="faculty" name="faculty" required>
+        <select id="faculty" name="faculty">
           <option value="<?php echo $user['faculty']; ?>" selected hidden><?php echo $user['faculty']; ?></option>
           <option>国際日本学部</option>
           <option>建築＆芸術学部</option>
           <option>現代社会学部</option>
           <option>経営学部</option>
           <option>健康栄養学部</option>
-          <option>国際看護学部</option>
         </select>
       </div>
       <div class="form-group">
@@ -150,10 +149,6 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
       "健康栄養学部": [{
         value: "栄養学専攻",
         text: "栄養学専攻"
-      }, ],
-      "国際看護学部": [{
-        value: "看護学専攻",
-        text: "看護学専攻"
       }, ],
     };
 

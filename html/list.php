@@ -17,6 +17,8 @@ $users = $sth->fetchAll(PDO::FETCH_ASSOC);
     <th>一言コメント</th>
     <th>グループ</th>
     <th>写真</th>
+    <th></th>
+    <th></th>
   </tr>
   <?php foreach ($users as $user): ?>
     <tr>

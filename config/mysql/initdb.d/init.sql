@@ -4,10 +4,10 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(20) NOT NULL,
-    grade VARCHAR(6) NOT NULL,
-    faculty VARCHAR(100) NOT NULL,
-    department VARCHAR(100) NOT NULL,
+    name VARCHAR(20),
+    grade VARCHAR(6),
+    faculty VARCHAR(100),
+    department VARCHAR(100),
     comment TEXT,
     photo VARCHAR(255),
     team VARCHAR(20)

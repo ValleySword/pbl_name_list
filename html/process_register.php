@@ -1,12 +1,12 @@
 <?php
 require 'db.php';
 
-$name = trim($_POST['name']);
-$grade = trim($_POST['grade']);
-$department = trim($_POST['department']);
-$faculty = trim($_POST['faculty']);
-$comment = trim($_POST['comment']);
-$team = trim($_POST['team']);
+$name      = isset($_POST['name']) ? trim($_POST['name']) : '';
+$grade     = isset($_POST['grade']) ? trim($_POST['grade']) : '';
+$faculty   = isset($_POST['faculty']) ? trim($_POST['faculty']) : '';
+$department = isset($_POST['department']) ? trim($_POST['department']) : '';
+$comment   = isset($_POST['comment']) ? trim($_POST['comment']) : '';
+$team = isset($_POST['team']) ? trim($_POST['team']) : '';
 
 if (preg_match('/\/|\<|\>/', $name)) {
   $sym = array('<', '/', '>');
@@ -30,7 +30,7 @@ if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
 try {
   $stmt = $pdo->prepare("INSERT INTO users (name, grade, faculty, department, comment, team, photo) VALUES (?, ?, ?, ?, ?, ?, ?)");
   $stmt->execute([$name, $grade, $faculty, $department, $comment, $team, $photoPath]);
-  header("Location: list.php");
+  header("Location: team_list.php");
   exit;
 } catch (PDOException $e) {
   echo "登録エラー: " . $e->getMessage();

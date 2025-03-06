@@ -16,6 +16,7 @@ require 'db.php';
             <?php echo $i; ?>グループ
         </button>
     <?php endfor; ?>
+    <button class="team-btn" onclick="openModal('スタッフ')">スタッフ</button>
 </div>
 <!-- モーダルウィンドウ -->
 <div id="myModal" class="modal">

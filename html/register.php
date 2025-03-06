@@ -9,23 +9,22 @@
     </div>
     <div class="form-group">
       <label for="grade">学籍番号（大文字）</label>
-      <input type="text" id="grade" name="grade" pattern="^[A-Z0-9]+$" maxlength="6" required>
+      <input type="text" id="grade" name="grade" pattern="^[A-Z0-9]+$" maxlength="6">
     </div>
     <div class="form-group">
       <label for="faculty">学部</label>
-      <select id="faculty" name="faculty" required>
+      <select id="faculty" name="faculty">
         <option value="" disabled selected hidden>選択してください</option>
         <option value="国際日本学部">国際日本学部</option>
         <option value="建築＆芸術学部">建築＆芸術学部</option>
         <option value="現代社会学部">現代社会学部</option>
         <option value="経営学部">経営学部</option>
         <option value="健康栄養学部">健康栄養学部</option>
-        <option value="国際看護学部">国際看護学部</option>
       </select>
     </div>
     <div class="form-group">
       <label for="department">コース</label>
-      <select id="department" name="department" required>
+      <select id="department" name="department">
         <option value="" disabled selected hidden>選択してください</option>
         <!-- JavaScriptでオプションを挿入 -->
       </select>
@@ -35,12 +34,13 @@
       <textarea id="comment" name="comment" maxlength="20"></textarea>
     </div>
     <div class="form-group">
-      <label for="team">グループ</label>
+      <label for="team">グループ（スタッフ）</label>
       <select id="team" name="team" required>
         <option value="" disabled selected hidden>選択してください</option>
         <?php for ($i = 1; $i < 10; $i++): ?>
           <option><?php echo $i; ?></option>
         <?php endfor; ?>
+        <option>スタッフ</option>
       </select>
     </div>
     <div class="form-group">
@@ -133,10 +133,6 @@
       "健康栄養学部": [{
         value: "栄養学専攻",
         text: "栄養学専攻"
-      }, ],
-      "国際看護学部": [{
-        value: "看護学専攻",
-        text: "看護学専攻"
       }, ],
     };
 
