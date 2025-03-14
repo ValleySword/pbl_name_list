@@ -43,6 +43,7 @@ if (!$users) {
 
         th,
         td {
+            white-space: nowrap;
             padding: 16px;
             border: 1px solid #ccc;
             text-align: center;
@@ -54,7 +55,7 @@ if (!$users) {
         }
 
         img {
-            max-width: 100%;
+            min-width: 100%;
             height: auto;
         }
 
@@ -63,6 +64,7 @@ if (!$users) {
 
             th,
             td {
+                white-space: nowrap;
                 padding: 24px;
                 /* パディングを小さく */
                 font-size: 14px;
@@ -71,7 +73,7 @@ if (!$users) {
 
             /* テーブルが横にスクロールできるようにする */
             table {
-                min-width: 700px;
+                min-width: 1400px;
             }
         }
     </style>

@@ -41,7 +41,7 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
       <div class="form-group">
         <label for="department">コース</label>
-        <select id="department" name="department" required>
+        <select id="department" name="department">
           <option value="<?php echo $user['department']; ?>" selected hidden><?php echo $user['department']; ?></option>
           <!-- JavaScriptでオプションを挿入 -->
         </select>
